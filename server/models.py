@@ -12,3 +12,9 @@ class Message(db.Model, SerializerMixin):
     __tablename__ = 'messages'
 
     id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String)
+    body = db.Column(db.String)
+    created_at = db.Column(db.DateTime, server_default=db.func.now())
+    
+    def __repr__(self):
+        return f'<Message {self.id}: {self.body} from {self.username} created at {self.created_at}>'

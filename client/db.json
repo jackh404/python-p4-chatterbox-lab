@@ -2,7 +2,7 @@
   "messages": [
     {
       "id": 1,
-      "body": "Hello 👋",
+      "body": "Hello, World!",
       "username": "Liza",
       "created_at": "2021-01-07T09:15:27"
     },
@@ -29,6 +29,51 @@
       "body": "You got this! 💪",
       "username": "Liza",
       "created_at": "2021-01-07T09:21:11"
+    },
+    {
+      "username": "Duane",
+      "body": "hey girl hey!!",
+      "id": 6
+    },
+    {
+      "username": "Duane",
+      "body": "what",
+      "id": 7
+    },
+    {
+      "username": "Duane",
+      "body": "nothin",
+      "id": 8
+    },
+    {
+      "username": "Duane",
+      "body": "oh hey it's persistent!",
+      "id": 9
+    },
+    {
+      "username": "Duane",
+      "body": "i've got this!",
+      "id": 10
+    },
+    {
+      "username": "Duane",
+      "body": "do you respond",
+      "id": 11
+    },
+    {
+      "username": "Duane",
+      "body": "hello",
+      "id": 12
+    },
+    {
+      "username": "Duane",
+      "body": "hi",
+      "id": 13
+    },
+    {
+      "body": "Hello, World!",
+      "username": "Ian",
+      "id": 14
     }
   ]
 }

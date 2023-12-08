@@ -14,13 +14,42 @@ migrate = Migrate(app, db)
 
 db.init_app(app)
 
-@app.route('/messages')
+@app.route('/messages', methods = ['GET','POST'])
 def messages():
-    return ''
+    if request.method == 'GET':
+        messages = [message.to_dict() for message in Message.query.all()]
+        response = make_response(messages,200)
+    elif request.method == 'POST':
+        post_content = request.get_json()
+        new_message = Message(
+            username = post_content['username'],
+            body = post_content['body']
+        )
+        db.session.add(new_message)
+        db.session.commit()
+        response = make_response(new_message.to_dict(),201)
+    return response
 
-@app.route('/messages/<int:id>')
+@app.route('/messages/<int:id>', methods = ['GET','PATCH','DELETE'])
 def messages_by_id(id):
-    return ''
+    message = Message.query.filter_by(id=id).first()
+    if request.method == 'GET':
+        response = make_response(message.to_dict(),200)
+    elif request.method == 'PATCH':
+        patch_content = request.get_json()
+        for attr in patch_content:
+            setattr(message, attr, patch_content[attr])
+            db.session.add(message)
+            db.session.commit()
+            response = make_response(message.to_dict(),200)
+    elif request.method == 'DELETE':
+        db.session.delete(message)
+        db.session.commit()
+        response = make_response({
+            "delete_successful":True,
+            "message": "Message deleted."
+        },200)
+    return response
 
 if __name__ == '__main__':
     app.run(port=5555)
